@@ -1,9 +1,9 @@
-# ```ch-dcc-keys```: DCC Signing Keys and the Swiss Trust Chain
+# DCC Signing Keys and the Swiss Trust Chain
 
 This repo is about fetching the Europe-wide list of _"Digital COVID
 Certificate signing keys"_ (DCC keys) as served by the Swiss
-Government. Our tool assesses the trustworthiness of these keys by
-checking the Swiss Government's digital signature chain that is
+Government. Our tool assesses the trustworthiness of these public keys
+by checking the Swiss Government's digital signature chain that is
 attached to the returned data.
 
 # Quick Start
@@ -38,7 +38,7 @@ Although we don't make use of the SDK (and therefore are not bound by
 the following) and believe that access to governmental public keys
 should be permissionless, we point to the comment in the Android app's
 source code:
-```
+```java
 // If you intend to integrate the CovidCertificate-SDK into your app,
 // please get in touch with BIT/BAG to get a token assigned.
 ```
@@ -121,7 +121,7 @@ and does the following:
 The output of the Python script is in JSON format where we show the
 first few lines:
 
-```
+```json
 {
   "Ll3NP03zOxY=": [
     {
