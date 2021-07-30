@@ -33,6 +33,7 @@ fi
 
 FN="$DATA_DIR/CH-$TAG-keylist.jwt"
 curl -X GET -s -S \
+     --compressed \
      -H 'Accept: application/json+jws' \
      -H 'Accept-Encoding: gzip' \
      -H 'Authorization: Bearer 0795dc8b-d8d0-4313-abf2-510b12d50939' \
@@ -46,6 +47,7 @@ echo "----> $FN"
 
 FN="$DATA_DIR/CH-$TAG-updates.jwt"
 curl -X GET -s -S \
+     --compressed \
      -H 'Accept: application/json+jws' \
      -H 'Accept-Encoding: gzip' \
      -H 'Authorization: Bearer 0795dc8b-d8d0-4313-abf2-510b12d50939' \
