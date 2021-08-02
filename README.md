@@ -13,6 +13,7 @@ attached to the returned data.
 ----> ./data/CH-root.crt
 ----> ./data/CH-20210715at1944-keylist.jwt
 ----> ./data/CH-20210715at1944-updates.jwt
+----> ./data/CH-20210715at1944-crl.jwt
 % ./CH-jwt2json.py data/CH-root.crt \
                    data/CH-20210715at1944-updates.jwt \
                    data/CH-20210715at1944-keylist.jwt \
@@ -20,6 +21,13 @@ attached to the returned data.
 ```
 The file of interest, in this case, is ```data/CH-20210715at1944-DCCkeys.json```
 
+The file `CH-20210715at1944-crl.jwt` contains the list of revoked certificates.
+The list itself does not contain much information, but the revoked signatures
+can be exracted and counted:
+
+```text
+% ./CH-jwt2txt.py data/CH-root.crt data/CH-20210715at1944-crl.jwt | wc -l
+```
 
 # Background on the Swiss "List of DCC keys" Setup
 
