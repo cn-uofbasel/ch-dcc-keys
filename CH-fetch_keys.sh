@@ -57,4 +57,18 @@ if [ $? -ne 0 ]; then
 fi
 echo "----> $FN"
 
+FN="$DATA_DIR/CH-$TAG-crl.jwt"
+curl -X GET -f -s -S \
+     --compressed \
+     -H 'Accept: application/json+jws' \
+     -H 'Accept-Encoding: gzip' \
+     -H 'Authorization: Bearer 0795dc8b-d8d0-4313-abf2-510b12d50939' \
+     -H 'User-Agent: ch.admin.bag.covidcertificate.wallet;2.1.1;1626211804080;Android;28' \
+     $BASE_URL/revocationList >$FN
+if [ $? -ne 0 ]; then
+    echo "** curl problem $? for update"
+    exit
+fi
+echo "----> $FN"
+
 # eof
