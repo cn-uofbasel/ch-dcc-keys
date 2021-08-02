@@ -9,6 +9,8 @@
 
 
 
+set -euo pipefail
+
 if [ "$#" == "0" ]; then
     TAG=`date -u +%Y%m%dat%H%M`
 else
@@ -32,12 +34,13 @@ else
 fi
 
 FN="$DATA_DIR/CH-$TAG-keylist.jwt"
-curl -X GET -s -S \
+curl -X GET -f -s -S \
+     --compressed \
      -H 'Accept: application/json+jws' \
      -H 'Accept-Encoding: gzip' \
      -H 'Authorization: Bearer 0795dc8b-d8d0-4313-abf2-510b12d50939' \
      -H 'User-Agent: ch.admin.bag.covidcertificate.wallet;2.1.1;1626211804080;Android;28' \
-     $BASE_URL/keys/list   >$FN
+     $BASE_URL/keys/list >$FN
 if [ $? -ne 0 ]; then
     echo "** curl problem $? for keys/list"
     exit
@@ -45,12 +48,13 @@ fi
 echo "----> $FN"
 
 FN="$DATA_DIR/CH-$TAG-updates.jwt"
-curl -X GET -s -S \
+curl -X GET -f -s -S \
+     --compressed \
      -H 'Accept: application/json+jws' \
      -H 'Accept-Encoding: gzip' \
      -H 'Authorization: Bearer 0795dc8b-d8d0-4313-abf2-510b12d50939' \
      -H 'User-Agent: ch.admin.bag.covidcertificate.wallet;2.1.1;1626211804080;Android;28' \
-     $BASE_URL/keys/updates?certFormat=ANDROID   >$FN
+     $BASE_URL/keys/updates?certFormat=ANDROID >$FN
 if [ $? -ne 0 ]; then
     echo "** curl problem $? for keys/updates"
     exit
