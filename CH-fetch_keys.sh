@@ -37,6 +37,7 @@ curl -X GET -s -S \
      -H 'Accept-Encoding: gzip' \
      -H 'Authorization: Bearer 0795dc8b-d8d0-4313-abf2-510b12d50939' \
      -H 'User-Agent: ch.admin.bag.covidcertificate.wallet;2.1.1;1626211804080;Android;28' \
+     --compressed \
      $BASE_URL/keys/list   >$FN
 if [ $? -ne 0 ]; then
     echo "** curl problem $? for keys/list"
@@ -50,6 +51,7 @@ curl -X GET -s -S \
      -H 'Accept-Encoding: gzip' \
      -H 'Authorization: Bearer 0795dc8b-d8d0-4313-abf2-510b12d50939' \
      -H 'User-Agent: ch.admin.bag.covidcertificate.wallet;2.1.1;1626211804080;Android;28' \
+     --compressed \
      $BASE_URL/keys/updates?certFormat=ANDROID   >$FN
 if [ $? -ne 0 ]; then
     echo "** curl problem $? for keys/updates"
